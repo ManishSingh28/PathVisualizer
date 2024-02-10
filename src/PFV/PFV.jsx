@@ -37,12 +37,12 @@ export default class PFV extends Component {
     this.setState({ mouseIsPressed: false });
   }
 
-  animateDijkstra(visitedNodesInOrder, nodesInShotestPathOrder) {
+  animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
       if (i === visitedNodesInOrder.length) {
         setTimeout(() => {
-          this.animateShortestPath(nodesInShotestPathOrder);
-        }, 10 * i);
+          this.animateShortestPath(nodesInShortestPathOrder);
+        }, 25 * i);
         return;
       }
       setTimeout(() => {
@@ -52,22 +52,22 @@ export default class PFV extends Component {
     }
   }
 
-  animateShortestPath(nodesInShotestPathOrder) {
-    for(let i = 0; i < nodesInShotestPathOrder.length; i++) {
+  animateShortestPath(nodesInShortestPathOrder) {
+    for(let i = 0; i < nodesInShortestPathOrder.length; i++) {
       setTimeout(() => {
-        const node = nodesInShotestPathOrder[i] ;
-        document.getElementById(`node-${node.row}-${node.col}`).className = `node node-shortest-path`;
+        const node = nodesInShortestPathOrder[i] ;
+        document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
       }, 50 * i);
     }
   }
 
-  visualizeDijsktra() {
+  visualizeDijkstra() {
     const { grid } = this.state;
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
-    const nodesInShotestPathOrder = getNodesInShortestPathOrder(finishNode);
-    this.animateDijkstra(visitedNodesInOrder, nodesInShotestPathOrder);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
   render() {
@@ -75,7 +75,7 @@ export default class PFV extends Component {
 
     return (
       <>
-        <button onClick={() => this.visualizeDijsktra()}>
+        <button onClick={() => this.visualizeDijkstra()}>
           Visualize Dijsktra's Algorithm
         </button>
         <div className="grid">
