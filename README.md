@@ -1,3 +1,7 @@
+This project is the simpler version of Original Pathfinding Visualizer created for visualizing/animating pathfinding graph algorithms. Currently only Dijkstra's algorithm is implemented. The code is lot cleaner and simpler in React compared to original Javascript code.
+
+Try it here : https://pathvisualizer-smoky.vercel.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
